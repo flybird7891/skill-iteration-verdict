@@ -1,0 +1,210 @@
+{
+  "builder_id": "project-ai-01",
+  "contract": [
+    {
+      "id": "R1",
+      "pass_condition": "启动后完成三次移动操作，无阻塞",
+      "priority": "P0",
+      "required_evidence": [
+        "test_output",
+        "screenshot"
+      ],
+      "source": "user-original",
+      "status": "active",
+      "text": "游戏可以启动并响应核心操作",
+      "weight": 3.0,
+      "weight_source": "priority_default"
+    },
+    {
+      "id": "R2",
+      "pass_condition": "能够到达结束状态并重新开始",
+      "priority": "P0",
+      "required_evidence": [
+        "screenshot"
+      ],
+      "source": "user-original",
+      "status": "active",
+      "text": "游戏存在明确完成条件",
+      "weight": 3.0,
+      "weight_source": "priority_default"
+    },
+    {
+      "id": "R3",
+      "pass_condition": "每次核心操作都有可见反馈",
+      "priority": "P1",
+      "required_evidence": [
+        "interaction_record"
+      ],
+      "source": "user-satisfaction",
+      "status": "active",
+      "text": "操作反馈清晰",
+      "weight": 2.0,
+      "weight_source": "priority_default"
+    }
+  ],
+  "coverage_pass": true,
+  "current_round": 1,
+  "evidence_coverage": 1.0,
+  "evidence_coverage_min": 1.0,
+  "issues": [],
+  "max_rounds": 3,
+  "mode": "strict",
+  "p0_failures": [],
+  "p0_pass": true,
+  "profile": "game",
+  "quality_score": 1.0,
+  "reason": "技术门禁与用户终审均通过。",
+  "regressions": [],
+  "requirements": [
+    {
+      "evidence": [
+        {
+          "artifact": "round-01/artifact",
+          "kind": "test_output",
+          "locator": "python tests/run_game.py",
+          "observation": "启动和移动测试 4/4 通过。",
+          "verified_at": "2026-11-13T16:10:00+08:00"
+        }
+      ],
+      "evidence_covered": true,
+      "id": "R1",
+      "pass_condition": "启动后完成三次移动操作，无阻塞",
+      "priority": "P0",
+      "reason": "启动和三次移动操作均成功。",
+      "required_evidence": [
+        "test_output",
+        "screenshot"
+      ],
+      "review_status": "met",
+      "score": 1.0,
+      "source": "user-original",
+      "status": "active",
+      "suggested_fix": "",
+      "text": "游戏可以启动并响应核心操作",
+      "weight": 3.0,
+      "weight_source": "priority_default"
+    },
+    {
+      "evidence": [
+        {
+          "artifact": "round-01/artifact",
+          "kind": "screenshot",
+          "locator": "round-01/end-state.png",
+          "observation": "结束界面显示重新开始按钮。",
+          "verified_at": "2026-11-13T16:11:00+08:00"
+        }
+      ],
+      "evidence_covered": true,
+      "id": "R2",
+      "pass_condition": "能够到达结束状态并重新开始",
+      "priority": "P0",
+      "reason": "到达结束界面后可以重新开始。",
+      "required_evidence": [
+        "screenshot"
+      ],
+      "review_status": "met",
+      "score": 1.0,
+      "source": "user-original",
+      "status": "active",
+      "suggested_fix": "",
+      "text": "游戏存在明确完成条件",
+      "weight": 3.0,
+      "weight_source": "priority_default"
+    },
+    {
+      "evidence": [
+        {
+          "artifact": "round-01/artifact",
+          "kind": "interaction_record",
+          "locator": "playtest-01.mp4",
+          "observation": "三次移动和一次碰撞均出现反馈动画。",
+          "verified_at": "2026-11-13T16:12:00+08:00"
+        }
+      ],
+      "evidence_covered": true,
+      "id": "R3",
+      "pass_condition": "每次核心操作都有可见反馈",
+      "priority": "P1",
+      "reason": "移动和碰撞都有即时视觉反馈。",
+      "required_evidence": [
+        "interaction_record"
+      ],
+      "review_status": "met",
+      "score": 1.0,
+      "source": "user-satisfaction",
+      "status": "active",
+      "suggested_fix": "",
+      "text": "操作反馈清晰",
+      "weight": 2.0,
+      "weight_source": "priority_default"
+    }
+  ],
+  "review": {
+    "notes": "盲评只使用冻结版本和证据。",
+    "results": [
+      {
+        "evidence": [
+          {
+            "artifact": "round-01/artifact",
+            "kind": "test_output",
+            "locator": "python tests/run_game.py",
+            "observation": "启动和移动测试 4/4 通过。",
+            "verified_at": "2026-11-13T16:10:00+08:00"
+          }
+        ],
+        "id": "R1",
+        "reason": "启动和三次移动操作均成功。",
+        "status": "met",
+        "suggested_fix": ""
+      },
+      {
+        "evidence": [
+          {
+            "artifact": "round-01/artifact",
+            "kind": "screenshot",
+            "locator": "round-01/end-state.png",
+            "observation": "结束界面显示重新开始按钮。",
+            "verified_at": "2026-11-13T16:11:00+08:00"
+          }
+        ],
+        "id": "R2",
+        "reason": "到达结束界面后可以重新开始。",
+        "status": "met",
+        "suggested_fix": ""
+      },
+      {
+        "evidence": [
+          {
+            "artifact": "round-01/artifact",
+            "kind": "interaction_record",
+            "locator": "playtest-01.mp4",
+            "observation": "三次移动和一次碰撞均出现反馈动画。",
+            "verified_at": "2026-11-13T16:12:00+08:00"
+          }
+        ],
+        "id": "R3",
+        "reason": "移动和碰撞都有即时视觉反馈。",
+        "status": "met",
+        "suggested_fix": ""
+      }
+    ],
+    "reviewed_artifact_version": "round-01",
+    "reviewer_id": "judge-01",
+    "reviewer_mode": "independent_reviewer"
+  },
+  "revision_orders": [],
+  "rounds_remaining": 2,
+  "run_id": "strict-example-001",
+  "schema_version": "2.0",
+  "score_pass": true,
+  "submission_version": "round-01",
+  "technical_pass": true,
+  "threshold": 0.8,
+  "title": "示例小游戏独立仲裁",
+  "user_decision": {
+    "decided_at": "2026-11-13T16:30:00+08:00",
+    "decision": "accepted",
+    "notes": "核心玩法符合目标。"
+  },
+  "verdict": "qualified"
+}

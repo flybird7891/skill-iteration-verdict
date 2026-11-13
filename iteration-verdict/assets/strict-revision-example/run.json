@@ -1,0 +1,96 @@
+{
+  "schema_version": "2.0",
+  "run_id": "strict-revision-example-001",
+  "title": "示例小游戏第一轮复评",
+  "mode": "strict",
+  "builder_id": "project-ai-01",
+  "profile": "game",
+  "threshold": 0.8,
+  "evidence_coverage_min": 1.0,
+  "max_rounds": 3,
+  "current_round": 2,
+  "submission_version": "round-02",
+  "contract": [
+    {
+      "id": "R1",
+      "text": "游戏可以启动并响应核心操作",
+      "priority": "P0",
+      "source": "user-original",
+      "pass_condition": "启动后完成三次移动操作，无阻塞",
+      "required_evidence": [
+        "test_output",
+        "screenshot"
+      ],
+      "status": "active"
+    },
+    {
+      "id": "R2",
+      "text": "游戏存在明确完成条件",
+      "priority": "P0",
+      "source": "user-original",
+      "pass_condition": "能够到达结束状态并重新开始",
+      "required_evidence": [
+        "screenshot"
+      ],
+      "status": "active"
+    }
+  ],
+  "review": {
+    "reviewer_mode": "independent_reviewer",
+    "reviewer_id": "judge-01",
+    "reviewed_artifact_version": "round-02",
+    "results": [
+      {
+        "id": "R1",
+        "status": "met",
+        "reason": "核心操作仍可完成。",
+        "evidence": [
+          {
+            "kind": "test_output",
+            "artifact": "round-02/artifact",
+            "locator": "python tests/run_game.py",
+            "observation": "启动和移动测试 4/4 通过。",
+            "verified_at": "2026-11-13T17:00:00+08:00"
+          }
+        ],
+        "suggested_fix": ""
+      },
+      {
+        "id": "R2",
+        "status": "unmet",
+        "reason": "到达目标区域后没有出现结束状态。",
+        "evidence": [
+          {
+            "kind": "screenshot",
+            "artifact": "round-02/artifact",
+            "locator": "round-02/target-reached.png",
+            "observation": "到达目标区域后仍停留在游戏场景。",
+            "verified_at": "2026-11-13T17:01:00+08:00"
+          }
+        ],
+        "suggested_fix": "补充到达目标后的结束状态和重新开始入口。"
+      }
+    ],
+    "notes": "R1 无回归，R2 仍阻塞完成流程。"
+  },
+  "user_decision": {
+    "decision": "accepted_with_caveats",
+    "decided_at": "2026-11-13T17:20:00+08:00",
+    "notes": "愿意保留当前版本，但结束条件仍需补齐。"
+  },
+  "history": [
+    {
+      "round": 1,
+      "results": [
+        {
+          "id": "R1",
+          "status": "met"
+        },
+        {
+          "id": "R2",
+          "status": "unmet"
+        }
+      ]
+    }
+  ]
+}

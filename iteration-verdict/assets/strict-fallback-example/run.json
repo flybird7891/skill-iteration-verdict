@@ -1,0 +1,52 @@
+{
+  "schema_version": "2.0",
+  "run_id": "strict-fallback-example-001",
+  "title": "Strict 自动回退示例",
+  "requested_mode": "strict",
+  "mode": "quick",
+  "fallback_reason": "宿主未提供可隔离的独立裁判上下文",
+  "builder_id": "self-ai",
+  "profile": "general",
+  "threshold": 0.8,
+  "evidence_coverage_min": 1.0,
+  "max_rounds": 3,
+  "current_round": 1,
+  "submission_version": "round-01",
+  "contract": [
+    {
+      "id": "R1",
+      "text": "核心功能可用",
+      "priority": "P0",
+      "source": "user-original",
+      "pass_condition": "核心流程实际运行成功",
+      "required_evidence": [
+        "test_output"
+      ],
+      "status": "active"
+    }
+  ],
+  "review": {
+    "reviewer_mode": "single_reviewer",
+    "reviewer_id": "self-check",
+    "reviewed_artifact_version": "round-01",
+    "results": [
+      {
+        "id": "R1",
+        "status": "met",
+        "reason": "核心流程测试通过。",
+        "evidence": [
+          {
+            "kind": "test_output",
+            "artifact": "round-01/artifact",
+            "locator": "python tests/run.py",
+            "observation": "1/1 核心流程测试通过。",
+            "verified_at": "2026-11-13T18:00:00+08:00"
+          }
+        ],
+        "suggested_fix": ""
+      }
+    ],
+    "notes": "独立裁判不可用，使用单评审者自检。"
+  },
+  "history": []
+}

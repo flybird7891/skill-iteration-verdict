@@ -1,0 +1,7 @@
+interface:
+  display_name: "迭代裁决"
+  short_description: "管理AI迭代修订，完成盲评并输出可追溯裁定。"
+  default_prompt: "使用 $iteration-verdict 验收这个项目，先询问我选择 Quick Check 还是 Strict Arbitration。"
+
+policy:
+  allow_implicit_invocation: true

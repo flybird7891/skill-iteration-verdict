@@ -1,0 +1,82 @@
+{
+  "schema_version": "2.0",
+  "run_id": "quick-example-001",
+  "title": "示例落地页检查",
+  "mode": "quick",
+  "builder_id": "self-ai",
+  "profile": "web",
+  "threshold": 0.8,
+  "evidence_coverage_min": 1.0,
+  "max_rounds": 3,
+  "current_round": 1,
+  "submission_version": "round-01",
+  "contract": [
+    {
+      "id": "R1",
+      "text": "页面可以正常打开",
+      "priority": "P0",
+      "source": "user-original",
+      "pass_condition": "浏览器打开页面后首屏可见",
+      "required_evidence": [
+        "screenshot",
+        "console_state"
+      ],
+      "status": "active"
+    },
+    {
+      "id": "R2",
+      "text": "主要按钮可以完成交互",
+      "priority": "P1",
+      "source": "user-original",
+      "pass_condition": "点击主按钮后显示成功状态",
+      "required_evidence": [
+        "interaction_record"
+      ],
+      "status": "active"
+    }
+  ],
+  "review": {
+    "reviewer_mode": "single_reviewer",
+    "reviewer_id": "self-check",
+    "reviewed_artifact_version": "round-01",
+    "results": [
+      {
+        "id": "R1",
+        "status": "met",
+        "reason": "页面首屏可以正常显示。",
+        "evidence": [
+          {
+            "kind": "screenshot",
+            "artifact": "round-01/landing.html",
+            "locator": "round-01/screenshot.png",
+            "observation": "首屏在 1440x900 视口完整显示。",
+            "verified_at": "2026-11-13T16:00:00+08:00"
+          }
+        ],
+        "suggested_fix": ""
+      },
+      {
+        "id": "R2",
+        "status": "met",
+        "reason": "按钮点击后出现成功提示。",
+        "evidence": [
+          {
+            "kind": "interaction_record",
+            "artifact": "round-01/landing.html",
+            "locator": "main button",
+            "observation": "点击后成功提示出现。",
+            "verified_at": "2026-11-13T16:01:00+08:00"
+          }
+        ],
+        "suggested_fix": ""
+      }
+    ],
+    "notes": "单 AI 自检。"
+  },
+  "user_decision": {
+    "decision": "not_required",
+    "decided_at": "",
+    "notes": ""
+  },
+  "history": []
+}
